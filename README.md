@@ -56,6 +56,11 @@ npm run build    # output in dist/
   book-opening learning scene and title card).
 - `public/emblem.png` / `public/favicon.png` — open-spellbook emblem
   generated for the site (six school runes above the book).
+- `public/banner.webp` — hex-board battlefield at dusk, the landing page hero.
+- `public/library.webp` — golden-hour library with a glowing spellbook,
+  on the libraries page.
+- `public/sponsors.webp` — glowing book, quill and gold coins, on the
+  sponsors page.
 
 ## Notes
 

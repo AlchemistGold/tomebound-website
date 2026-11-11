@@ -1,18 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
 const schools = [
-  { name: 'Pyro', color: 'var(--pyro)', text: 'Fire. Direct, punishing damage from the front line.' },
-  { name: 'Frost', color: 'var(--frost)', text: 'Ice. Shields, slows, and control of the board.' },
-  { name: 'Storm', color: 'var(--storm)', text: 'Lightning. Fast strikes that chain across adjacent hexes.' },
-  { name: 'Verdant', color: 'var(--verdant)', text: 'Growth. Healing and wards that keep allies standing.' },
-  { name: 'Geo', color: 'var(--geo)', text: 'Stone. Tough, positional play that reshapes the fight.' },
-  { name: 'Umbral', color: 'var(--umbral)', text: 'Shadow. Tricks, drains, and an edge on any ground.' },
+  { name: 'Pyro', letter: 'P', color: 'var(--pyro)', tint: 'var(--pyro-tint)', text: 'Fire. Direct, punishing damage from the front line.' },
+  { name: 'Frost', letter: 'F', color: 'var(--frost)', tint: 'var(--frost-tint)', text: 'Ice. Shields, slows, and control of the board.' },
+  { name: 'Storm', letter: 'S', color: 'var(--storm)', tint: 'var(--storm-tint)', text: 'Lightning. Fast strikes that chain across adjacent hexes.' },
+  { name: 'Verdant', letter: 'V', color: 'var(--verdant)', tint: 'var(--verdant-tint)', text: 'Growth. Healing and wards that keep allies standing.' },
+  { name: 'Geo', letter: 'G', color: 'var(--geo)', tint: 'var(--geo-tint)', text: 'Stone. Tough, positional play that reshapes the fight.' },
+  { name: 'Umbral', letter: 'U', color: 'var(--umbral)', tint: 'var(--umbral-tint)', text: 'Shadow. Tricks, drains, and an edge on any ground.' },
 ];
 ---
 <Base title="Home" description="Tomebound Tactics — a mobile PvP strategy game where elemental wizards battle on a 61-hex board and learn spells by studying real books.">
   <span class="badge">In development</span>
   <h1>The game that levels you up for reading real books.</h1>
   <p class="lede">Tomebound Tactics is a mobile PvP strategy game. Elemental wizards battle on a board of sixty-one hexes — and they grow stronger by studying real books, one ISBN at a time.</p>
+
+  <img class="hero-img" src="/banner.webp" alt="Six wizards in their school colours standing on a glowing hex board at dusk, with three shrines" />
 
   <video class="hero" src="/teaser.mp4" poster="/emblem.png" controls preload="metadata" playsinline>
     Your browser does not support the video tag. <a href="/teaser.mp4">Watch the teaser</a>.
@@ -30,7 +32,8 @@ const schools = [
   <div class="grid">
     {schools.map((s) => (
       <div class="card school" style={`border-top-color: ${s.color}`}>
-        <h3 style={`color: ${s.color}`}>{s.name}</h3>
+        <div class="token" style={`background: ${s.color}`}>{s.letter}</div>
+        <h3 style={`color: ${s.tint}`}>{s.name}</h3>
         <p>{s.text}</p>
       </div>
     ))}
