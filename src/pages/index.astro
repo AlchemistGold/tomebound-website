@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+const schools = [
+  { name: 'Pyro', color: 'var(--pyro)', text: 'Fire. Direct, punishing damage from the front line.' },
+  { name: 'Frost', color: 'var(--frost)', text: 'Ice. Shields, slows, and control of the board.' },
+  { name: 'Storm', color: 'var(--storm)', text: 'Lightning. Fast strikes that chain across adjacent hexes.' },
+  { name: 'Verdant', color: 'var(--verdant)', text: 'Growth. Healing and wards that keep allies standing.' },
+  { name: 'Geo', color: 'var(--geo)', text: 'Stone. Tough, positional play that reshapes the fight.' },
+  { name: 'Umbral', color: 'var(--umbral)', text: 'Shadow. Tricks, drains, and an edge on any ground.' },
+];
+---
+<Base title="Home" description="Tomebound Tactics — a mobile PvP strategy game where elemental wizards battle on a 61-hex board and learn spells by studying real books.">
+  <span class="badge">In development</span>
+  <h1>The game that levels you up for reading real books.</h1>
+  <p class="lede">Tomebound Tactics is a mobile PvP strategy game. Elemental wizards battle on a board of sixty-one hexes — and they grow stronger by studying real books, one ISBN at a time.</p>
+
+  <video class="hero" src="/teaser.mp4" poster="/emblem.png" controls preload="metadata" playsinline>
+    Your browser does not support the video tag. <a href="/teaser.mp4">Watch the teaser</a>.
+  </video>
+  <p class="muted">First look: the board assembles, the shrines ignite, and a wizard opens the book to learn a new spell.</p>
+
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><strong>Scan a book.</strong> Point your phone camera at a book's ISBN. The book's original publication year sets your wizard's rank, and its study grants a skill — a page of the spellbook, once per wizard, ever.</li>
+    <li><strong>Study once a day.</strong> Each wizard may study one book per day. The Daily Study Rule keeps the game about reading, not grinding.</li>
+    <li><strong>Battle on the hexes.</strong> Wizards fight only from adjacent hexes, on a randomly generated sixty-one hex board with three shrines. Position is everything.</li>
+  </ol>
+
+  <h2>Six schools of wizardry</h2>
+  <div class="grid">
+    {schools.map((s) => (
+      <div class="card school" style={`border-top-color: ${s.color}`}>
+        <h3 style={`color: ${s.color}`}>{s.name}</h3>
+        <p>{s.text}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2>Epochs, not seasons</h2>
+  <p>The game runs in eight-week epochs. Each epoch has a name, a storyline chapter unlocked by community milestones, and a canon of featured books. When an epoch ends, its abilities rotate to the Archive after two epochs — the Fading Rule — so the game keeps moving. The launch epoch will be called <strong>Alchemist Reign</strong>.</p>
+
+  <h2>Never pay to win</h2>
+  <p>Money buys cosmetics — skins, wands, spirit animals — and nothing that touches progression. Featured Tomes, the game's sponsorships, buy efficiency and certainty for a study, never extra power. A sponsor's book can be featured; it can never be stronger.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0">Get notified at launch</h3>
+    <p>One email when the launch epoch opens, and one per epoch after that. Nothing else.</p>
+    <!-- Newsletter: replace YOUR_LIST_ID with the Buttondown list ID once the list is created. See README. -->
+    <form class="newsletter" action="https://buttondown.com/api/emails/embed-subscribe/YOUR_LIST_ID" method="post">
+      <label for="email" class="muted" style="position:absolute;left:-9999px">Email address</label>
+      <input id="email" type="email" name="email" placeholder="you@example.com" required />
+      <button type="submit">Notify me</button>
+    </form>
+    <p class="muted">Newsletter signup opens once the mailing list is connected — see the README for the one-line setup.</p>
+  </div>
+
+  <p>
+    <a class="btn" href="/libraries/">For libraries</a>
+    <a class="btn ghost" href="/sponsors/">For publishers</a>
+    <a class="btn ghost" href="/press/">Press kit</a>
+  </p>
+</Base>

@@ -1,0 +1,176 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/sponsors/', label: 'Sponsors' },
+  { href: '/libraries/', label: 'Libraries' },
+  { href: '/faq/', label: 'FAQ' },
+  { href: '/press/', label: 'Press' },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>{title} — Tomebound Tactics</title>
+    <style>
+      :root {
+        --ink: #0c0e1a;
+        --panel: #141828;
+        --panel-2: #1a1f36;
+        --parchment: #e9e4d6;
+        --muted: #a9a49b;
+        --gold: #e9c979;
+        --gold-dim: #b99a55;
+        --line: #2a3049;
+        --pyro: #f06423;
+        --frost: #6cb4f0;
+        --storm: #9b7ff0;
+        --verdant: #58c472;
+        --geo: #e8a13a;
+        --umbral: #8a4fd0;
+      }
+      * { box-sizing: border-box; }
+      html { background: var(--ink); }
+      body {
+        margin: 0;
+        background: var(--ink);
+        color: var(--parchment);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.6;
+      }
+      h1, h2, h3 {
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--gold);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      h1 { font-size: 2.6rem; margin: 0 0 0.75rem; }
+      h2 { font-size: 1.7rem; margin: 2.5rem 0 0.75rem; }
+      h3 { font-size: 1.2rem; margin: 1.5rem 0 0.5rem; }
+      p { margin: 0 0 1rem; }
+      a { color: var(--gold); }
+      a:hover { color: #f4d98f; }
+      .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.25rem; }
+      header.site {
+        border-bottom: 1px solid var(--line);
+        background: #0a0c16;
+      }
+      .nav-row {
+        max-width: 880px; margin: 0 auto; padding: 0.9rem 1.25rem;
+        display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+      }
+      .wordmark {
+        display: flex; align-items: center; gap: 0.6rem;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.35rem; font-weight: 700; color: var(--gold);
+        text-decoration: none; letter-spacing: 0.02em;
+      }
+      .wordmark img { width: 34px; height: 34px; border-radius: 6px; }
+      nav.main { margin-left: auto; display: flex; gap: 1.1rem; flex-wrap: wrap; }
+      nav.main a {
+        color: var(--parchment); text-decoration: none; font-size: 0.95rem;
+      }
+      nav.main a[aria-current="page"] { color: var(--gold); border-bottom: 2px solid var(--gold); }
+      nav.main a:hover { color: var(--gold); }
+      main { padding: 2.5rem 0 3rem; }
+      .badge {
+        display: inline-block; font-size: 0.8rem; letter-spacing: 0.12em;
+        text-transform: uppercase; color: var(--ink);
+        background: var(--gold); border-radius: 999px;
+        padding: 0.25rem 0.8rem; font-weight: 700; margin-bottom: 1rem;
+      }
+      .lede { font-size: 1.2rem; color: var(--parchment); }
+      .muted { color: var(--muted); }
+      .card {
+        background: var(--panel); border: 1px solid var(--line);
+        border-radius: 12px; padding: 1.25rem 1.4rem; margin: 1rem 0;
+      }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+      .school { border-top: 4px solid var(--gold); }
+      .school h3 { margin-top: 0.25rem; }
+      .btn {
+        display: inline-block; background: var(--gold); color: var(--ink);
+        font-weight: 700; text-decoration: none; border-radius: 8px;
+        padding: 0.7rem 1.3rem; margin: 0.4rem 0.6rem 0.4rem 0;
+      }
+      .btn.ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold-dim); }
+      video.hero {
+        width: 100%; border-radius: 12px; border: 1px solid var(--line);
+        display: block; margin: 1.5rem 0; background: #000;
+      }
+      table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+      th, td { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--line); }
+      th { color: var(--gold); font-family: Georgia, serif; }
+      form.newsletter { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; }
+      form.newsletter input[type="email"] {
+        flex: 1 1 240px; padding: 0.7rem 0.9rem; border-radius: 8px;
+        border: 1px solid var(--line); background: var(--panel-2); color: var(--parchment);
+        font-size: 1rem;
+      }
+      form.newsletter button {
+        padding: 0.7rem 1.3rem; border-radius: 8px; border: 0;
+        background: var(--gold); color: var(--ink); font-weight: 700; cursor: pointer;
+        font-size: 1rem;
+      }
+      footer.site {
+        border-top: 1px solid var(--line); padding: 1.5rem 0 2.5rem;
+        color: var(--muted); font-size: 0.9rem;
+      }
+      footer.site nav { display: flex; gap: 1.1rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+      footer.site a { color: var(--muted); text-decoration: none; }
+      footer.site a:hover { color: var(--gold); }
+      .steps { counter-reset: step; list-style: none; padding: 0; }
+      .steps li {
+        counter-increment: step; margin: 0 0 1rem; padding-left: 3rem; position: relative;
+      }
+      .steps li::before {
+        content: counter(step); position: absolute; left: 0; top: 0;
+        width: 2rem; height: 2rem; border-radius: 50%;
+        background: var(--gold); color: var(--ink); font-weight: 700;
+        display: flex; align-items: center; justify-content: center;
+        font-family: Georgia, serif;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="nav-row">
+        <a class="wordmark" href="/">
+          <img src="/emblem.png" alt="" width="34" height="34" />
+          Tomebound Tactics
+        </a>
+        <nav class="main" aria-label="Main">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={path === item.href || (item.href !== '/' && path.startsWith(item.href)) ? 'page' : undefined}>{item.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        <slot />
+      </div>
+    </main>
+    <footer class="site">
+      <div class="wrap">
+        <nav aria-label="Footer">
+          <a href="/privacy/">Privacy</a>
+          <a href="/support/">Support</a>
+          <a href="/press/">Press kit</a>
+          <a href="/sponsors/">Sponsors</a>
+          <a href="/libraries/">Libraries</a>
+        </nav>
+        <p>Tomebound Tactics is in development. The launch epoch will be called Alchemist Reign. No launch date has been announced.</p>
+      </div>
+    </footer>
+  </body>
+</html>
