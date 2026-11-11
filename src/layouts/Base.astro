@@ -23,7 +23,11 @@ const nav = [
     <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title} — Tomebound Tactics</title>
     <ClientRouter />
-    <style>
+    <!-- Global, not scoped: a layout's scoped styles do NOT apply to content
+         passed through <slot />. Scoped here, the rules silently matched
+         nothing on any page (verified in the built CSS: selectors carried
+         [data-astro-cid-*] while the slotted elements carry none). -->
+    <style is:global>
       :root {
         --ink: #0c0e1a;
         --panel: #141828;
