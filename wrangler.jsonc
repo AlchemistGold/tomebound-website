@@ -7,5 +7,11 @@
   "compatibility_date": "2026-11-10",
   "assets": {
     "directory": "dist"
-  }
+  },
+  // Custom domains: Cloudflare creates the DNS records and certificates
+  // on deploy. Apex attached 2026-11-13; www added the same day.
+  "routes": [
+    { "pattern": "tomeboundtactics.com", "custom_domain": true },
+    { "pattern": "www.tomeboundtactics.com", "custom_domain": true }
+  ]
 }
