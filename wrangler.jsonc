@@ -1,0 +1,11 @@
+{
+  // Static-assets Worker: the site is fully static (Astro `dist` output).
+  // This declares in the repo what Cloudflare's first build (2026-11-12)
+  // otherwise improvises per build. No "main" entry point: assets only.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tomebound-website",
+  "compatibility_date": "2026-11-10",
+  "assets": {
+    "directory": "dist"
+  }
+}

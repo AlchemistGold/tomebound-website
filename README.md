@@ -1,7 +1,8 @@
 # Tomebound Tactics — website
 
-Marketing site for Tomebound Tactics. Astro (static output) on Cloudflare Pages.
-Stack chosen 2026-11-11: Astro 5 + Cloudflare Pages + Cloudflare Registrar +
+Marketing site for Tomebound Tactics. Astro (static output) on Cloudflare,
+deployed as a static-assets Worker (see `wrangler.jsonc`).
+Stack chosen 2026-11-11: Astro 5 + Cloudflare + Cloudflare Registrar +
 Buttondown (newsletter) + Cloudflare Web Analytics. No server, no monthly bill.
 
 ## Pages
@@ -24,24 +25,26 @@ npm run dev      # http://localhost:4321
 npm run build    # output in dist/
 ```
 
-## Deploy (Cloudflare Pages)
+## Deploy (Cloudflare, git-connected Worker)
 
-1. Create the repository (e.g. `AlchemistGold/tomebound-website`) and push this folder.
-2. In Cloudflare Pages: Create application → Connect to Git → pick the repo.
-   - Framework preset: **Astro**
-   - Build command: `npm run build`
-   - Build output directory: `dist`
-3. Add the custom domain (see below). Cloudflare issues the certificate.
-4. Turn on Cloudflare Web Analytics (free, no cookies) for the site.
+The repo is connected to a Cloudflare Worker named `tomebound-website`
+(Workers Builds, connected 2026-11-12). Builds run `npm run build` and
+deploy with `wrangler deploy` using the committed `wrangler.jsonc`
+(static assets from `dist`, no server entry point). The custom domain
+`tomeboundtactics.com` is attached to the Worker; Cloudflare issued the
+certificate. Turn on Cloudflare Web Analytics (free, no cookies) for the
+site if not already on.
+
+Note: the first build (2026-11-12) ran before `wrangler.jsonc` existed in
+the repo and auto-configured an Astro Cloudflare adapter inside the build
+only; that improvisation is superseded by the committed config.
 
 ## Setup steps still open
 
-1. **Domain.** `tomeboundtactics.com` looked available in a registry
-   (RDAP) lookup on 2026-11-11 — confirm at the registrar when buying, as
-   availability can change. Register it at Cloudflare Registrar (at cost)
-   and attach it in Pages. Until then the site lives at the Pages URL
-   (`*.pages.dev`). The Astro `site` value in `astro.config.mjs` already
-   points at `https://tomeboundtactics.com`; change it if another name is chosen.
+1. **Domain.** Done — `tomeboundtactics.com` registered at Cloudflare
+   Registrar and live 2026-11-13; email routing to
+   alchemistgolddevelopment@gmail.com confirmed working the same day.
+   The `www` subdomain is not yet attached.
 2. **Newsletter.** The signup form on the home page posts to Buttondown
    (list username `tomeboundtactics`, connected 2026-11-13).
 3. **Contact email.** Every page uses the placeholder `[CONTACT EMAIL]`.
