@@ -42,10 +42,8 @@ npm run build    # output in dist/
    and attach it in Pages. Until then the site lives at the Pages URL
    (`*.pages.dev`). The Astro `site` value in `astro.config.mjs` already
    points at `https://tomeboundtactics.com`; change it if another name is chosen.
-2. **Newsletter.** The signup form on the home page posts to Buttondown.
-   Create the list at buttondown.com, then replace `YOUR_LIST_ID` in
-   `src/pages/index.astro` with the list ID. Until then the form carries a
-   note that signup opens once the list is connected.
+2. **Newsletter.** The signup form on the home page posts to Buttondown
+   (list username `tomeboundtactics`, connected 2026-11-13).
 3. **Contact email.** Every page uses the placeholder `[CONTACT EMAIL]`.
    Search the project for it and replace with the launch contact address
    when one is set.
