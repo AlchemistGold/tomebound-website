@@ -47,9 +47,9 @@ only; that improvisation is superseded by the committed config.
    The `www` subdomain is not yet attached.
 2. **Newsletter.** The signup form on the home page posts to Buttondown
    (list username `tomeboundtactics`, connected 2026-11-13).
-3. **Contact email.** Every page uses the placeholder `[CONTACT EMAIL]`.
-   Search the project for it and replace with the launch contact address
-   when one is set.
+3. **Contact email.** Done 2026-11-13 — all pages use
+   `castspells@tomeboundtactics.com` (mailto links); placeholder notes
+   removed.
 
 ## Assets
 
