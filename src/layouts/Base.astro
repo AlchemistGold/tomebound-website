@@ -134,6 +134,15 @@ const nav = [
         padding: 0.7rem 1.3rem; margin: 0.4rem 0.6rem 0.4rem 0;
       }
       .btn.ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold-dim); }
+      /* Icon-only social links: gold glyph in a ring, no labels. */
+      .social-icons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+      .social-icons a {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 44px; height: 44px; border-radius: 50%;
+        border: 1px solid var(--gold-dim); color: var(--gold);
+      }
+      .social-icons a:hover { border-color: var(--gold); color: #f4d98f; background: var(--panel-2); }
+      .social-icons svg { width: 22px; height: 22px; fill: currentColor; }
       video.hero {
         width: 100%; border-radius: 12px; border: 1px solid var(--line);
         display: block; margin: 1.5rem 0; background: #000;
@@ -232,6 +241,8 @@ const nav = [
           <a href="/libraries/">Libraries</a>
           <a href="https://www.facebook.com/profile.php?id=61596859743304" target="_blank" rel="noopener">Facebook</a>
           <a href="https://discord.gg/DurJH5FVrj" target="_blank" rel="noopener">Discord</a>
+          <a href="https://www.instagram.com/tomeboundtactics/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@alchemist.gold.de" target="_blank" rel="noopener">TikTok</a>
         </nav>
         <p>Tomebound Tactics is in development. The launch epoch, Alchemist Reign, opens March 1, 2027.</p>
       </div>
